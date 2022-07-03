@@ -1,18 +1,18 @@
 <template>
   <div id="header" class="header flex">
-    <img src="../assets/logob.png" />
+    <img v-scroll-to="{ el: 'body', offset: -115 }" src="../assets/logob.png" />
     <nav v-if="$mq != 'sm'">
-      <div v-scroll-to="'#header'">Home</div>
-      <div v-scroll-to="'#service'">Service</div>
-      <div v-scroll-to="'#details'">Details</div>
-      <div v-scroll-to="'#details'">Contacts</div>
+      <div v-scroll-to="{ el: 'body', offset: -115 }">Home</div>
+      <div v-scroll-to="{ el: '#service', offset: -115 }">Service</div>
+      <div v-scroll-to="{ el: '#details', offset: -115 }">Details</div>
+      <div v-scroll-to="{ el: '#contacts', offset: -115 }">Contacts</div>
     </nav>
     <Slide v-else right :closeOnNavigation="true">
       <div class="menu">
-        <div v-scroll-to="'#header'">Home</div>
-        <div v-scroll-to="'#service'">Service</div>
-        <div v-scroll-to="'#details'">Details</div>
-        <div v-scroll-to="'#details'">Contacts</div>
+        <div v-scroll-to="{ el: 'body', offset: -115 }">Home</div>
+        <div v-scroll-to="{ el: '#service', offset: -115 }">Service</div>
+        <div v-scroll-to="{ el: '#details', offset: -115 }">Details</div>
+        <div v-scroll-to="{ el: '#contacts', offset: -115 }">Contacts</div>
       </div>
     </Slide>
   </div>
@@ -31,6 +31,9 @@ export default {
 <style lang="scss" scoped>
 .header {
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 999999;
   justify-content: space-between;
   align-items: center;
   padding: 30px 200px;
@@ -76,6 +79,7 @@ export default {
   }
   img {
     width: 170px;
+    cursor: pointer;
   }
 }
 

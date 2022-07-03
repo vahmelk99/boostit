@@ -4,7 +4,9 @@
       <p class="heading">
         Proffessional Digital Marketing Company For <span>Your Business!</span>
       </p>
-      <button type="button">Order Ad</button>
+      <button type="button" v-scroll-to="{ el: '#contacts', offset: -115 }">
+        Order Ad
+      </button>
     </div>
     <div class="rightImg">
       <img src="../assets/herok.png" alt="" />
@@ -91,6 +93,12 @@ export default {}
     img {
       max-width: 450px !important;
     }
+  }
+}
+@media screen and (max-width: 530px) {
+  .rightImg > img {
+    width: 300px !important;
+    margin-top: 30px;
   }
 }
 </style>

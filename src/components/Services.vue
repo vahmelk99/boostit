@@ -50,12 +50,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.titleing {
-  text-align: center;
-  font-weight: bold;
-  font-size: 35px;
-  span {
-    color: #ffc145;
+#service {
+  margin-bottom: 70px;
+  .titleing {
+    text-align: center;
+    font-weight: bold;
+    font-size: 45px;
+    span {
+      color: #ffc145;
+    }
+  }
+}
+@media screen and (max-width: 1180px) {
+  #service {
+    margin-bottom: 50px;
   }
 }
 ::v-deep {

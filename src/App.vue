@@ -4,6 +4,7 @@
     <Home />
     <Services />
     <Details />
+    <Footer />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Header from './components/Header.vue'
 import Home from './components/Home.vue'
 import Details from './components/Details.vue'
 import Services from './components/Services.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
@@ -19,6 +21,7 @@ export default {
     Header,
     Home,
     Details,
+    Footer,
     Services,
   },
 }
@@ -34,6 +37,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
+  user-select: none;
+
   color: #2c3e50;
   /* margin-top: 60px; */
 }
