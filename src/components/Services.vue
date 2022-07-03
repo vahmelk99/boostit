@@ -9,7 +9,7 @@
       :duration="4000"
       :arrows="false"
       :bullets="false"
-      :slide-ratio="$mq != 'sm' ? 1 / 5 : 1 / 2"
+      :slide-ratio="$mq != 'sm' ? 1 / 4 : 1 / 2"
       :visible-slides="$mq != 'sm' ? 4 : 2"
       :dragging-distance="100"
       :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
@@ -17,12 +17,7 @@
       <vueper-slide
         v-for="service in services"
         :key="service"
-        :title="service"
-        :image="
-          require(`@/assets/${service}.${
-            service.includes('Brand') ? 'png' : 'svg'
-          }`)
-        "
+        :image="require(`@/assets/${service}.svg`)"
       >
       </vueper-slide>
     </vueper-slides>
