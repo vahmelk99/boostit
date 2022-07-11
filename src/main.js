@@ -14,7 +14,7 @@ import {
   faViber,
 } from '@fortawesome/free-brands-svg-icons'
 import Vuelidate from 'vuelidate'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 Vue.use(Vuelidate)
 Vue.use(VueMq, {
   breakpoints: {
@@ -34,9 +34,9 @@ library.add(faTwitter)
 library.add(faInstagram)
 library.add(faLinkedin)
 library.add(faTelegram)
+library.add(faEnvelope)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
-
 new Vue({
   render: (h) => h(App),
 }).$mount('#app')

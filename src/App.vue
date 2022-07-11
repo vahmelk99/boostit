@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="home">
     <Header />
     <Home />
     <Services />
@@ -31,8 +31,10 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 115px;
 }
-#app {
+#home {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

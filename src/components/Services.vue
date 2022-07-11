@@ -9,7 +9,7 @@
       :duration="4000"
       :arrows="false"
       :bullets="false"
-      :slide-ratio="$mq != 'sm' ? 1 / 4 : 1 / 2"
+      :slide-ratio="$mq != 'sm' ? 1 / 4 : 2 / 3"
       :visible-slides="$mq != 'sm' ? 4 : 2"
       :dragging-distance="100"
       :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
@@ -68,6 +68,14 @@ export default {
       margin-bottom: 10%;
       font-size: 20px;
       font-weight: bold;
+    }
+  }
+}
+@media screen and (max-width: 530px) {
+  #service {
+    margin-bottom: 30px;
+    .titleing {
+      font-size: 40px !important;
     }
   }
 }

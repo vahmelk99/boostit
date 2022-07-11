@@ -186,22 +186,22 @@ export default {
           background-color: rgba($color: #000000, $alpha: 0.7);
         }
         &.display {
-          background-image: url('../assets/display.jpg');
+          background-image: url('@/assets/display.jpg');
         }
         &.search {
-          background-image: url('../assets/serach.jpg');
+          background-image: url('@/assets/serach.jpg');
         }
         &.social {
-          background-image: url('../assets/social.jpg');
+          background-image: url('@/assets/social.jpg');
         }
         &.video {
-          background-image: url('../assets/video.jpg');
+          background-image: url('@/assets/video.jpg');
         }
         &.mobile {
-          background-image: url('../assets/mobile.jpg');
+          background-image: url('@/assets/mobile.jpg');
         }
         &.branding {
-          background-image: url('../assets/brand.jpg');
+          background-image: url('@/assets/brand.jpg');
           background-position: top center;
         }
       }
@@ -260,6 +260,24 @@ export default {
       .detCon {
         margin-left: 0 !important;
         margin-top: 50px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .details {
+    padding: 0 30px 30px !important;
+    .titleing {
+      font-size: 40px !important;
+    }
+    .detCon > div {
+      padding: 20px !important;
+      h2 {
+        margin-bottom: 10px !important;
+      }
+      p {
+        font-size: 20px !important;
       }
     }
   }

@@ -37,8 +37,10 @@
             v-model="message"
             :class="getStyle('message')"
           ></textarea>
-          <p>*Please fill all the fields</p>
-          <button type="submit" class="send">SEND</button>
+          <p :class="[allError && 'error']">*Please fill all the fields</p>
+          <button :disabled="sendDisabled" type="submit" class="send">
+            SEND
+          </button>
         </form>
         <div class="socialWrapper">
           <h1 class="social"><span>We</span> On Social Media</h1>
@@ -63,11 +65,12 @@
             />
           </div>
           <a class="phone" href="tel:+37499680001">
-            <font-awesome-icon
-              @click="open('')"
-              :icon="{ prefix: 'fa', iconName: 'phone' }"
-            />
+            <font-awesome-icon :icon="{ prefix: 'fa', iconName: 'phone' }" />
             +374 99 68 00 01
+          </a>
+          <a class="envelope" href="mailto:info@boost-that.com">
+            <font-awesome-icon :icon="{ prefix: 'fa', iconName: 'envelope' }" />
+            info@boost-that.com
           </a>
         </div>
       </div>
@@ -89,6 +92,8 @@ import {
 export default {
   data() {
     return {
+      allError: false,
+      sendDisabled: false,
       fullName: '',
       position: '',
       userEmail: '',
@@ -131,23 +136,35 @@ export default {
     open(link) {
       window.open(link, '_blank')
     },
-    submit(e) {
+    async submit(e) {
       e.preventDefault()
+      this.$v
       if (!this.$v.$invalid) {
-        fetch('http://localhost:3030', {
-          fullName: this.fullName,
-          position: this.position,
-          email: this.userEmail,
-          companyLink: this.companyLink,
-          message: this.message,
+        this.sendDisabled = true
+        let res = await fetch('https://boost-that.com/api/user/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fullName: this.fullName,
+            position: this.position,
+            email: this.userEmail,
+            companyLink: this.companyLink,
+            message: this.message,
+          }),
         })
+        // console.log(res)
+        this.sendDisabled = false
+        this.allError = false
         this.message = ''
         this.fullName = ''
         this.position = ''
         this.userEmail = ''
         this.companyLink = ''
+      } else {
+        this.allError = true
       }
-      return 0
     },
   },
 }
@@ -156,13 +173,16 @@ export default {
 <style lang="scss" scoped>
 #contacts {
   .formWrapper {
-    .phone {
+    .phone,
+    .envelope {
       border-radius: 20px;
       // border: 1px solid black;
       padding: 20px 0;
       max-width: 330px;
-      display: block;
-      font-size: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
       text-align: center;
       margin-top: 20px;
       color: white;
@@ -212,11 +232,14 @@ export default {
           background-color: black;
           color: white;
           font-weight: bolder;
-          cursor: pointer;
           font-size: 20px;
           width: auto;
           transition: all 0.3s;
-          &:hover {
+          &:disabled {
+            background-color: gray;
+          }
+          &:hover:not(:disabled) {
+            cursor: pointer;
             scale: 1.01;
             box-shadow: -5px -5px 0 #ffc145;
             translate: 5px 5px;
@@ -226,6 +249,9 @@ export default {
           margin-bottom: 20px;
         }
         p {
+          &.error {
+            color: red;
+          }
           font-size: 20px;
         }
         input,
@@ -233,7 +259,7 @@ export default {
           display: block;
           // max-width: 400px;
           min-height: 33px;
-          width: 100%;
+          width: calc(100% - 20px);
           font-size: 22px;
           margin: 15px 0;
           padding: 10px;
@@ -276,7 +302,7 @@ export default {
   .cr {
     text-align: center;
     font-size: 18px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
 }
 @media screen and (max-width: 1180px) {
@@ -291,11 +317,32 @@ export default {
   }
 }
 @media screen and (max-width: 600px) {
-  .phone {
+  .contactTitle {
+    font-size: 40px !important;
+  }
+  .formInner {
+    margin-top: 10px !important;
+    form {
+      width: 100%;
+      padding: 40px !important;
+      h1 {
+        margin-bottom: 10px !important;
+      }
+      input,
+      textarea {
+        font-size: 18px !important;
+      }
+    }
+  }
+  .phone,
+  .envelope {
     font-size: 20px !important;
     svg {
       font-size: 20px !important;
     }
+  }
+  .cr {
+    padding-bottom: 20px !important;
   }
 }
 </style>

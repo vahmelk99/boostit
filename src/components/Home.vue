@@ -4,12 +4,10 @@
       <p class="heading">
         Proffessional Digital Marketing Company For <span>Your Business!</span>
       </p>
-      <button type="button" v-scroll-to="{ el: '#contacts', offset: -115 }">
-        Order Ad
-      </button>
+      <a href="#contacts"> Order Ad </a>
     </div>
     <div class="rightImg">
-      <img src="../assets/herok.png" alt="" />
+      <img src="@/assets/herok.png" alt="" />
     </div>
   </div>
 </template>
@@ -24,7 +22,7 @@ export default {}
   margin-top: 150px;
   display: flex;
   justify-content: space-between;
-  background-image: url('../assets/dzax-kox.png');
+  background-image: url('@/assets/dzax-kox.png');
   background-repeat: no-repeat;
   background-position: left bottom;
   transition: all 0.3s;
@@ -40,11 +38,13 @@ export default {}
           color: #ffc145;
         }
       }
-      > button {
+      > a {
         border-radius: 5px;
         border: none;
-        padding: 15px 60px;
+        text-decoration: none;
+        padding: 15px 60px 13px;
         background-color: black;
+        display: inline-block;
         color: white;
         font-weight: bolder;
         cursor: pointer;
@@ -96,6 +96,13 @@ export default {}
   }
 }
 @media screen and (max-width: 530px) {
+  .home {
+    padding: 30px;
+    margin-top: 20px;
+    .heading {
+      font-size: 40px !important;
+    }
+  }
   .rightImg > img {
     width: 300px !important;
     margin-top: 30px;

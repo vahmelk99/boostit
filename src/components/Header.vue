@@ -1,18 +1,18 @@
 <template>
   <div id="header" class="header flex">
-    <img v-scroll-to="{ el: 'body', offset: -115 }" src="../assets/logob.png" />
+    <a href="#home"><img src="@/assets/logob.png" /></a>
     <nav v-if="$mq != 'sm'">
-      <div v-scroll-to="{ el: 'body', offset: -115 }">Home</div>
-      <div v-scroll-to="{ el: '#service', offset: -115 }">Service</div>
-      <div v-scroll-to="{ el: '#details', offset: -115 }">Details</div>
-      <div v-scroll-to="{ el: '#contacts', offset: -115 }">Contacts</div>
+      <a href="#home">Home</a>
+      <a href="#service">Service</a>
+      <a href="#details">Details</a>
+      <a href="#contacts">Contacts</a>
     </nav>
     <Slide v-else right :closeOnNavigation="true">
       <div class="menu">
-        <div v-scroll-to="{ el: 'body', offset: -115 }">Home</div>
-        <div v-scroll-to="{ el: '#service', offset: -115 }">Service</div>
-        <div v-scroll-to="{ el: '#details', offset: -115 }">Details</div>
-        <div v-scroll-to="{ el: '#contacts', offset: -115 }">Contacts</div>
+        <a href="#home">Home</a>
+        <a href="#service">Service</a>
+        <a href="#details">Details</a>
+        <a href="#contacts">Contacts</a>
       </div>
     </Slide>
   </div>
@@ -37,7 +37,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 30px 200px;
-  background-image: url('../assets/boost-kayq.png');
+  background-image: url('@/assets/boost-kayq.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,10 +48,13 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
-    > div {
+    > a {
       width: 100%;
       text-align: left;
       padding: 10px 0;
+      display: block;
+      text-decoration: none;
+
       color: white;
       cursor: pointer;
       transition: all 0.3s;
@@ -64,8 +67,10 @@ export default {
   > nav {
     justify-content: center;
     display: flex;
-    > div {
+    > a {
       padding: 10px;
+      display: block;
+      text-decoration: none;
       font-size: 20px;
       cursor: pointer;
       color: black;
